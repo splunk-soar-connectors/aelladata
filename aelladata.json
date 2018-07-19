@@ -2,7 +2,7 @@
     "appid": "c3370d8e-79cd-410a-91b2-72079bd475e7",
     "name": "Aella Data Starlight",
     "description": "This app integrates with an Aella Data installation to implement ingestion and investigative actions",
-    "publisher": "Phantom",
+    "publisher": "Aella Data",
     "type": "siem",
     "main_module": "aelladata_connector.pyc",
     "app_version": "1.6.3",
@@ -11,9 +11,9 @@
     "product_name": "Starlight",
     "product_vendor": "Aella Data",
     "product_version_regex": ".*",
-    "min_phantom_version": "3.0.251",
+    "min_phantom_version": "3.5.180",
     "logo": "aella.png",
-    "license": "Copyright (c) Phantom Cyber Corporation 2016-2017",
+    "license": "Copyright (c) Aella Data Inc. 2017-2018",
     "configuration": {
         "url": {
             "data_type": "string",
@@ -58,9 +58,9 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "run query",
-            "description": "Run a search query on the Starlight installation based on the on_poll result.",
-            "verbose": "The action is to query the detailed information for the giving event id, which is passed on from artifect['id']",
+            "action": "get event",
+            "description": "Run a search query to get event on the Starlight installation based on the on_poll result",
+            "verbose": "The action is to query the detailed information for the given event id, which is passed on from artifect['id']",
             "type": "investigate",
             "identifier": "run_query",
             "read_only": true,
@@ -169,26 +169,31 @@
                 "container_id": {
                     "description": "Limit ingestion to these container IDs",
                     "data_type": "string",
+                    "order": 0,
                     "required": false
                 },
                 "start_time": {
                     "description": "Start of time range in epoch time (default: 10 days ago)",
                     "data_type": "numeric",
+                    "order": 1,
                     "required": false
                 },
                 "end_time": {
                     "description": "End of time range in epoch time (default: now)",
                     "data_type": "numeric",
+                    "order": 2,
                     "required": false
                 },
                 "container_count": {
                     "description": "Maximum number of containers to create",
                     "data_type": "numeric",
+                    "order": 3,
                     "required": false
                 },
                 "artifact_count": {
                     "description": "Maximum number of artifacts to create per container.",
                     "data_type": "numeric",
+                    "order": 4,
                     "required": false
                 }
             },
