@@ -99,7 +99,7 @@ class StarlightConnector(BaseConnector):
         # Create the headers
         headers.update(self._headers)
 
-        if (method in ['put', 'post']):
+        if (method in ['get', 'put', 'post']):
             headers.update({'Content-Type': 'application/json'})
 
         resp_json = None
@@ -215,7 +215,7 @@ class StarlightConnector(BaseConnector):
         if event_id:
             query_json = { "query": { "match": { "_id": event_id } } }
             query_string = json.dumps(query_json)
-            endpoint = "/{0}/{1}/_search".format("aella-ser*", "event")
+            endpoint = "/{0}/{1}/_search".format("aella-ser*", "amsg")
         else:
             # validate the query that we got
             query_string = param[AELLADATA_JSON_QUERY]
@@ -324,7 +324,7 @@ class StarlightConnector(BaseConnector):
         query_str = json.dumps(query_json)
 
         query_params = {
-            AELLADATA_JSON_TYPE: 'event',
+            AELLADATA_JSON_TYPE: 'amsg',
             AELLADATA_JSON_INDEX: index_str,
             AELLADATA_JSON_QUERY: query_str
         }

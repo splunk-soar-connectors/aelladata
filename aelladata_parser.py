@@ -45,7 +45,9 @@ def ingest_parser(data, log_func):
             'run_automation': True,
             'label': 'Starlight event',
             'name': event_name,
-            'source_data_identifier': eid
+            'source_data_identifier': eid,
+            'cef': {"eventId": eid},
+            'cef_types': {"eventId": ["starlight event id"]}
         })
 
         results.append({
