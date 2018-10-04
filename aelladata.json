@@ -14,7 +14,7 @@
     "min_phantom_version": "4.0.1068",
     "logo": "logo_aelladata.svg",
     "logo_dark": "logo_aelladata_dark.svg",
-    "license": "Copyright (c) Aella Data Inc. 2017-2018",
+    "license": "Copyright (c) Aella Data Inc. 2018",
     "configuration": {
         "url": {
             "data_type": "string",
