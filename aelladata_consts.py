@@ -1,7 +1,7 @@
 # --
 # File: aelladata/aelladata_consts.py
 #
-# Copyright (c) Aella Data Inc, 2017-2018
+# Copyright (c) Aella Data Inc, 2018
 #
 # This unpublished material is proprietary to Aella Data.
 # All rights reserved. The methods and
