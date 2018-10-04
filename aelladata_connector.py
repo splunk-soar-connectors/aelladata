@@ -30,8 +30,6 @@ import aelladata_parser
 
 # import pdb
 
-requests.packages.urllib3.disable_warnings()
-
 MODULE_NAME = 'custom_parser'
 HANDLER_NAME = 'handle_request'
 
@@ -56,12 +54,13 @@ class StarlightConnector(BaseConnector):
     def __init__(self):
         """ """
 
-        self._host = None
-        self._base_url = None
-        self._headers = None
-        self._auth_method = None
-        self._username = None
         self._key = None
+        self._host = None
+        self._verify = None
+        self._headers = None
+        self._base_url = None
+        self._username = None
+        self._auth_method = None
 
         # Call the BaseConnectors init first
         super(StarlightConnector, self).__init__()
@@ -87,6 +86,8 @@ class StarlightConnector(BaseConnector):
 
         if (self._username and self._password):
             self._auth_method = True
+
+        self._verify = config['verify_server_cert']
 
         return phantom.APP_SUCCESS
 
@@ -123,7 +124,7 @@ class StarlightConnector(BaseConnector):
                     data=json.dumps(data) if data else None,  # the data, converted to json string format if present, else just set to None
                     headers=headers,  # The headers to send in the HTTP call
                     # verify=config[phantom.APP_JSON_VERIFY],  # should cert verification be carried out?
-                    verify=False,  # should cert verification be carried out?
+                    verify=self._verify,  # should cert verification be carried out?
                     params=params)  # uri parameters if any
         except Exception as e:
             return (action_result.set_status(phantom.APP_ERROR, AELLADATA_ERR_SERVER_CONNECTION, e), resp_json)

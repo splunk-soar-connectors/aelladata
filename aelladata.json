@@ -22,15 +22,22 @@
             "description": "Starlight URL, e.g. https://mystarlight.enterprise.com/aellaelastic",
             "required": true
         },
+        "verify_server_cert": {
+            "data_type": "boolean",
+            "order": 1,
+            "description": "Verify Server Certificate",
+            "required": true,
+            "default": false
+        },
         "username": {
             "data_type": "string",
-            "order": 1,
+            "order": 2,
             "description": "Username",
             "required": true
         },
         "password": {
             "data_type": "password",
-            "order": 2,
+            "order": 3,
             "description": "Password",
             "required": true
         },
@@ -38,13 +45,13 @@
             "description": "Security event",
             "data_type": "string",
             "required": false,
-            "order": 3
+            "order": 4
         },
         "score": {
             "description": "Security event severity threshold",
             "data_type": "numeric",
             "required": false,
-            "order": 4
+            "order": 5
         }
     },
     "actions": [
