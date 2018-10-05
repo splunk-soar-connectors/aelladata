@@ -34,14 +34,6 @@ MODULE_NAME = 'custom_parser'
 HANDLER_NAME = 'handle_request'
 
 
-class PhantomDebugWriter():
-    def __init__(self, this):
-        self.this = this
-
-    def write(self, message):
-        self.this.debug_print(message)
-
-
 class StarlightConnector(BaseConnector):
 
     # actions supported by this script
@@ -338,11 +330,7 @@ class StarlightConnector(BaseConnector):
         for action_result in action_results:
             for data in action_result.get_data():
                 ret_dict_list = None
-                saved_stdout = sys.stdout
-                debug_out = PhantomDebugWriter(self)
-                sys.stdout = debug_out
                 ret_dict_list = aelladata_parser.ingest_parser(data, self.debug_print)
-                sys.stdout = saved_stdout
                 if not ret_dict_list:
                     continue
 
